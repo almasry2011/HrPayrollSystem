@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Continuity>
+
+@{
+    ViewData["Title"] = "Davamiyyət";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Davamiyyət cədvəli</h2>
+<p>
+    <a asp-action="Add">Əlavə et</a>
+</p>
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Işçinin A.S.A</th>
+                            <th>Tarix </th>
+                            <th>Səbəb növü</th>
+                            <th>Davamiyyət</th>
+                            <th>Hansı səbəbə</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Worker.Name
+                                    @item.Worker.Surname
+                                    @item.Worker.FatherName
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @item.Reason
+                                </td>
+                                <td>
+                                    @item.Status
+                                </td>
+                                <td>
+                                    @item.ReasonName
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary confirm" asp-action="WorkerAttendance" asp-route-id="@item.Worker.Id">Qaib limitini yoxla</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

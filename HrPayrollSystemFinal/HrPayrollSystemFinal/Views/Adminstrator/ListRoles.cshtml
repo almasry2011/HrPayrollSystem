@@ -1,0 +1,48 @@
+﻿@model IEnumerable<IdentityRole>
+
+@{
+    ViewData["Title"] = "Rol siyahı";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vəzifələr (Roles)</h2>
+@if (Model.Any())
+{
+    <a class="btn btn-primary" asp-controller="adminstrator" asp-action="CreateRole">
+        Yeni Rol əlavə et
+    </a>
+
+    <div class="row">
+        @foreach (var role in Model)
+        {
+
+        <div class="card col-md-6">
+            <div class="card-header">
+                RoleId: @role.Id
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@role.Name</h5>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-outline-primary" asp-action="EditRole" asp-controller="Adminstrator" asp-route-id="@role.Id">Düzəliş et</a>
+                
+            </div>
+        </div>
+
+        }
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            Rol daxil edilməyib
+        </div>
+        <div class="card-body">
+            <a class="btn btn-primary" style="width: auto" asp-controller="adminstrator" asp-action="CreateRole">
+                Yeni Rol əlavə et
+            </a>
+        </div>
+    </div>
+}
+

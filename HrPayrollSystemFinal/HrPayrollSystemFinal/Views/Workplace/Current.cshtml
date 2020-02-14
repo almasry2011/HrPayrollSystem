@@ -1,0 +1,72 @@
+﻿@model IEnumerable<HrPayrollSystemFinal.Models.CurrentWorkPlace>
+
+@{
+    ViewData["Title"] = "İşçilərin iş yerləri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İşçilərin vəzifələrinin siyahısı</h2>
+
+<p>
+    <a asp-action="AddCurrent"></a>
+</p>
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Işçinin A.S.A</th>
+                            <th>Şirkət </th>
+                            <th>Departament </th>
+                            <th>Mağaza </th>
+                            <th>Vəzifə</th>
+                            <th>Maaş </th>
+                            <th>Daxil olma tarixi</th>
+                            <th>Çıxış tarixi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Worker.Name)
+                                @Html.DisplayFor(modelItem => item.Worker.Surname)
+                                @Html.DisplayFor(modelItem => item.Worker.FatherName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Company.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Department.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Shop.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position.Salary) ₼ (AZN)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EntryDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ExitDate)
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary" asp-action="EditPosition" asp-route-id="@item.Id">Vəzifə dəyişikliyi</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

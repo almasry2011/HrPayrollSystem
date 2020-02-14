@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Məzuniyyət cədvəli";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Məzuniyyət cədvəlində axtarış</h2>
+<p>
+    <a asp-action="AddVacation">Əlavə et</a> |
+    <a asp-action="Index">Ümumi siyahiya keç</a>
+</p>
+
+<form asp-controller="Vacation" asp-action="List" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <select asp-items="Html.GetEnumSelectList<Month>()" class="form-control" name="enteredMonth">
+                <option value="" selected="selected"></option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <input type="submit" value="Axtarış et" class="btn btn-outline-primary" />
+        </div>
+    </div>
+</form>
+<hr />
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                İşçinin A.S.A
+                            </th>
+                            <th>
+                                Məzuniyyət tarixilər
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

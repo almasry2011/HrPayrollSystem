@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190925163816_initialChanged.cs" />
+    <Compile Remove="Migrations\20190925163816_initialChanged.Designer.cs" />
+    <Compile Remove="Migrations\20190926180929_PayrollDbChanged.cs" />
+    <Compile Remove="Migrations\20190926180929_PayrollDbChanged.Designer.cs" />
+    <Compile Remove="Migrations\20191003173726_WorkerTableChanged.cs" />
+    <Compile Remove="Migrations\20191003173726_WorkerTableChanged.Designer.cs" />
+    <Compile Remove="Migrations\20191011072147_WPromoChanged.cs" />
+    <Compile Remove="Migrations\20191011072147_WPromoChanged.Designer.cs" />
+    <Compile Remove="Migrations\20191011072527_WPromoChanged.cs" />
+    <Compile Remove="Migrations\20191011072527_WPromoChanged.Designer.cs" />
+    <Compile Remove="Migrations\20191017195136_DbChangedPayroll.cs" />
+    <Compile Remove="Migrations\20191017195136_DbChangedPayroll.Designer.cs" />
+    <Compile Remove="Migrations\20191017195242_DbChangedPayroll2.cs" />
+    <Compile Remove="Migrations\20191017195242_DbChangedPayroll2.Designer.cs" />
+    <Compile Remove="Migrations\20191017195403_DbChangedPayroll.cs" />
+    <Compile Remove="Migrations\20191017195403_DbChangedPayroll.Designer.cs" />
+    <Compile Remove="Migrations\20191017200630_DbChangedPayroll1.cs" />
+    <Compile Remove="Migrations\20191017200630_DbChangedPayroll1.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.3.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,11 @@
+﻿@model SelectListItemViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <select class="form-control" asp-items="Model.SelectListShops" name="ShopId" asp-for="Shop.Id">
+            <option value="">Mağaza adı daxil edin</option>
+        </select>
+        <span asp-validation-for="Shop.Id" class="text-danger"></span>
+    </div>
+</div>
+

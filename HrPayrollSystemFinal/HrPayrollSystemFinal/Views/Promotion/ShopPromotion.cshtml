@@ -1,0 +1,59 @@
+﻿@model HrPayrollSystemFinal.Models.ShopPromotion
+
+@{
+    ViewData["Title"] = "Mağaza bonusu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Mağaza satış bonusu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="ShopPromotion">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label asp-for="ShopId" class="control-label"></label>
+                    @await Component.InvokeAsync("Shop")
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Reward" class="control-label"></label>
+                    <input asp-for="Reward" class="form-control" />
+                    <span asp-validation-for="Reward" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label asp-for="MaxAmount" class="control-label"></label>
+                    <input asp-for="MaxAmount" class="form-control" />
+                    <span asp-validation-for="MaxAmount" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="MinAmount" class="control-label"></label>
+                    <input asp-for="MinAmount" class="form-control" />
+                    <span asp-validation-for="MinAmount" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input asp-for="StartDate" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="FinishDate" class="control-label"></label>
+                    <input asp-for="FinishDate" class="form-control" />
+                    <span asp-validation-for="FinishDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ShopPromotionList">Əvvələ qayıt</a>
+</div>
+

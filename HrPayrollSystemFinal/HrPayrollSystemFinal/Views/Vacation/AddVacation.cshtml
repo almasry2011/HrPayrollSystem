@@ -1,0 +1,41 @@
+﻿@model HrPayrollSystemFinal.Models.Vacation
+
+@{
+    ViewData["Title"] = "Məzuniyyət əlavə et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Əlavə et</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="AddVacation">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="WorkerId" class="control-label"></label>
+                    @await Component.InvokeAsync("CurrentWorkers")
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="VacationStarted" class="control-label"></label>
+                    <input asp-for="VacationStarted" class="form-control" />
+                    <span asp-validation-for="VacationStarted" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="VacationEnded" class="control-label"></label>
+                    <input asp-for="VacationEnded" class="form-control" />
+                    <span asp-validation-for="VacationEnded" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Əvvələ qayıt</a>
+</div>
+

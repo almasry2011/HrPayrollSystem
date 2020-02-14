@@ -1,0 +1,49 @@
+﻿@model HrPayrollSystemFinal.Models.PreviousWorkPlace
+
+@{
+    ViewData["Title"] = "Əvvəli iş yeri haqqında";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İşçilərin əvvəlki iş yerləri</h2>
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Işçinin A.S.A</th>
+                            <th>Əvvəlki iş yeri </th>
+                            <th>Daxil olma tarixi</th>
+                            <th>Çıxış tarixi</th>
+                            <th>İşdən çıxma səbəbi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>
+                                    @Model.Worker.Name
+                                    @Model.Worker.Surname
+                                    @Model.Worker.FatherName
+                                </td>
+                                <td>
+                                    @Model.WorkPlaceName
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => Model.EntryDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => Model.ExitDate)
+                                </td>
+                                <td>
+                                    @Model.ReasonOfTermination
+                                </td>
+                             </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,77 @@
+﻿@model HrPayrollSystemFinal.Viewmodels.PayrollViewModel
+
+@{
+    ViewBag.Empty = 0;
+    ViewData["Title"] = "Maaşın hesablanması";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İşçinin maaşının hesablanması</h2>
+@*<form asp-controller="Payroll" asp-action="SalaryCount" method="post" id="formABC">
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <select asp-items="Html.GetEnumSelectList<Month>()" class="form-control" name="enteredMonth" onchange="this.form.submit()">
+                    <option value="">Ay daxil edin..</option>
+                </select>
+            </div>
+        </div>
+    </form>*@
+<h3 style="text-align:right"> @DateTime.Now.ToShortDateString()</h3>
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+
+                    <thead>
+                        <tr>
+                            <th>İşçinin A.S.A</th>
+                            <th>Maaş</th>
+                            <th>Bonus</th>
+                            <th>Mağaza bonus</th>
+                            <th>Ay ərzində q/b'larının sayı</th>
+                            <th>Məzuniyyət bonus</th>
+                            <th>Total Məbləğ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Model.Worker.Name
+                                @Model.Worker.Surname
+                                @Model.Worker.FatherName
+                            </td>
+                            <td>
+                                @Model.Position.Salary ₼ (AZN)
+                            </td>
+                            <td>
+                                @if (Model.WorkerPromotion != null)
+                                {
+                                    @ViewBag.Empty
+                                } @Model.Bonus ₼ (AZN)
+                            </td>
+                            <td>
+                                @if (Model.ShopPromotion != null)
+                                {
+                                    @ViewBag.Empty
+                                } @Model.ShopBonus ₼ (AZN)
+                            </td>
+                            <td>
+                                @Model.CountofAbsentDays gün
+                            </td>
+                            <td>
+                                @Model.VacationBonus ₼ (AZN)
+                            </td>
+                            <td>
+                                @Model.TotalSalary ₼ (AZN)
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

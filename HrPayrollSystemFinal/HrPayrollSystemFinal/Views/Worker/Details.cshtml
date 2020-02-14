@@ -1,0 +1,108 @@
+﻿@model HrPayrollSystemFinal.Viewmodels.EditWorkerViewModel
+
+@{
+    ViewData["Title"] = "Şəxsi məlumat";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var photoPath = "~/workerImages/" + (Model.ExistingPath ?? "noimage.jpg");
+}
+
+<h2>İşçilər haqqında informasiya</h2>
+
+<h4>Detallı</h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <div class="row">
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Surname)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FatherName)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FatherName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BirthdayDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BirthdayDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EducationType)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EducationType)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MartialStatus)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MartialStatus)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Gender)
+                </dd>
+            </div>
+            <div class="col-md-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CurrentAdress)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CurrentAdress)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DistrictRegistration)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.DistrictRegistration)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PassportNumber)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PassportNumber)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PassportExpirationDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.PassportExpirationDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EmailAddress)
+                </dd>
+            </div>
+            <div class="col-md-4">
+                <dd>
+                    <img src="@photoPath" class="imageThumbnail" asp-append-version="true" />
+                </dd>
+            </div>
+        </div>
+        
+       
+            
+        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Düzəliş et</a> |
+    <a asp-action="List">İşçilərin siyahısı</a>
+</div>

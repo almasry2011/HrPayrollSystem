@@ -1,0 +1,8 @@
+﻿@model IEnumerable<CurrentWorkPlace>
+
+<option value="">Departament adı daxil edin..</option>
+
+@foreach (var worker in Model)
+{
+<option value="@worker.Id">@worker.Worker.Name @worker.Worker.Surname @worker.Worker.FatherName </option>
+}

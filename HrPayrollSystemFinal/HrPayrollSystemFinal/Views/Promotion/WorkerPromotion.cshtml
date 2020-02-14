@@ -1,0 +1,74 @@
+﻿@model HrPayrollSystemFinal.Models.WorkerPromotion
+
+@{
+    ViewData["Title"] = "İşçi bonusu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Işçiyə görə bonus</h2>
+@if (User.IsInRole("DHIT"))
+{
+    <h1>It Department</h1>
+}
+@if (User.IsInRole("DHMarketing"))
+{
+    <h1>Marketing Department</h1>
+}
+@if (User.IsInRole("DHSales"))
+{
+    <h1>Satiş Department</h1>
+}
+@if (User.IsInRole("DHBusinessDev"))
+{
+    <h1>Biznes inkişaf Department</h1>
+}
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="WorkerPromotion">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="form-group col-md-7">
+                    <label asp-for="WorkerId" class="control-label"></label>
+                    @if (User.IsInRole("DHIT"))
+                    {
+                        @await Component.InvokeAsync("ItWorkers")
+                    }
+                    @if (User.IsInRole("DHMarketing"))
+                    {
+                        @await Component.InvokeAsync("MarketingWorkers")
+                    }
+                    @if (User.IsInRole("DHSales"))
+                    {
+                        @await Component.InvokeAsync("SalesWorkers")
+                    }
+                    @if (User.IsInRole("DHBusinessDev"))
+                    {
+                        @await Component.InvokeAsync("BusinessDevWorkers")
+                    }
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Reward" class="control-label"></label>
+                    <input asp-for="Reward" class="form-control" placeholder="₼ (AZN)" />
+                    <span asp-validation-for="Reward" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Date" class="control-label"></label>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="WorkerPromotionList">Əvvələ qayıt</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

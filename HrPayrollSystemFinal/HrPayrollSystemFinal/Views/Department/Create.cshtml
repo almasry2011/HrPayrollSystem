@@ -1,0 +1,49 @@
+﻿@model HrPayrollSystemFinal.Models.Department
+
+
+@{
+    ViewData["Title"] = "Departament əlavə et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Əlavə et</h2>
+
+<h4>Departament</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyId" class="control-label"></label>
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    foreach (Company item in ViewBag.Company)
+                    {
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = item.Name,
+                            Value = item.Id.ToString()
+                        });
+                    }
+                }
+                <select asp-for="CompanyId" class="form-control" asp-items="listItems">
+                    <option selected="selected">Şirkət adı daxil edin..</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Departamentlərin siyahısı</a>
+</div>
+

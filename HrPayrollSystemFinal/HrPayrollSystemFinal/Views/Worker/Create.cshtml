@@ -1,0 +1,109 @@
+﻿@model HrPayrollSystemFinal.Viewmodels.WorkerViewModel
+
+@{
+    ViewData["Title"] = "İşçi Əlavə et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İşçilər haqqında informasiya</h2>
+
+<h4>Əlavə et</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="Surname" class="control-label"></label>
+                    <input asp-for="Surname" class="form-control" />
+                    <span asp-validation-for="Surname" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="FatherName" class="control-label"></label>
+                    <input asp-for="FatherName" class="form-control" />
+                    <span asp-validation-for="FatherName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3">
+                    <label asp-for="BirthdayDate" class="control-label"></label>
+                    <input asp-for="BirthdayDate" class="form-control" />
+                    <span asp-validation-for="BirthdayDate" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="CurrentAdress" class="control-label"></label>
+                    <input asp-for="CurrentAdress" class="form-control" placeholder="Şəhər, Adress..." />
+                    <span asp-validation-for="CurrentAdress" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="DistrictRegistration" class="control-label"></label>
+                    <input asp-for="DistrictRegistration" class="form-control" placeholder="Məsələn Xətai rayonu.." />
+                    <span asp-validation-for="DistrictRegistration" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="EmailAddress" class="control-label"></label>
+                    <input asp-for="EmailAddress" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="PassportNumber" class="control-label"></label>
+                    <input asp-for="PassportNumber" class="form-control" placeholder="Məsələn AZE000000..." />
+                    <span asp-validation-for="PassportNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="PassportExpirationDate" class="control-label"></label>
+                    <input asp-for="PassportExpirationDate" class="form-control" />
+                    <span asp-validation-for="PassportExpirationDate" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label asp-for="EducationType" class="control-label"></label>
+                    <select asp-for="EducationType" asp-items="Html.GetEnumSelectList<Education>()" class="form-control">
+                        <option selected="selected" value="">Zəhmət olmasa daxil edin</option>
+                    </select>
+                    <span asp-validation-for="EducationType" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="MartialStatus" class="control-label"></label>
+                    <select asp-for="MartialStatus" asp-items="Html.GetEnumSelectList<MartialStatus>()" class="form-control">
+                        <option selected="selected" value="">Zəhmət olmasa daxil edin</option>
+                    </select>
+                    <span asp-validation-for="MartialStatus" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Gender" class="control-label"></label>
+                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()" class="form-control">
+                        <option selected="selected" value="">Zəhmət olmasa daxil edin</option>
+                    </select>
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label"></label>
+                <input asp-for="Photo" accept="image/*" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">İşçilərin siyahısı</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

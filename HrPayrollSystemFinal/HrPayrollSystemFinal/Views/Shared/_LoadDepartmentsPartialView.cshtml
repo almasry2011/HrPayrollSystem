@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Department>
+
+<option value="">Departament adı daxil edin..</option>
+
+@foreach (var department in Model)
+{
+    <option value="@department.Id">@department.Name</option>
+}
+
+

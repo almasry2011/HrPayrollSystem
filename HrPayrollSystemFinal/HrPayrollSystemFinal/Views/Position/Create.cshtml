@@ -1,0 +1,79 @@
+﻿@model HrPayrollSystemFinal.Models.Position
+
+@{
+    ViewData["Title"] = "Vəzifə Əlavə et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Əlavə et</h2>
+
+<h4>Vəzifə</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row ">
+                <div class="form-group col-md-5">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Məsələn Satış təmsilçisi..." />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Salary" class="control-label"></label>
+                    <input asp-for="Salary" class="form-control" placeholder="Məsələn 100.00" />
+                    <span asp-validation-for="Salary" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label asp-for="CompanyId" class="control-label"></label>
+                    <select asp-for="CompanyId" class="form-control" id="companies" asp-items="@(new SelectList(ViewBag.Companies,"Id","Name"))">
+                        <option value="">Şirkət adı daxil edin..</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="DepartmentId" class="control-label"></label>
+                    <select asp-for="DepartmentId" class="form-control">
+                        <option value="">Departament adı daxil edin..</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Vəzifələrin siyahısı</a>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+
+        $(document).on("change", "#companies", function () {
+            var data = $("#companies").val();
+
+            if (data) {
+                $.ajax({
+                    url: "/Ajax/LoadDepartments",
+                    data: { companyId: data },
+                    type: "POST",
+                    success: function (res) {
+                        $("#DepartmentId").html(res)
+                    }
+                })
+            }
+            else {
+                $("#DepartmentId").html("<option>Departament adı daxil edin..</option>")
+            }
+
+        });
+
+    </script>
+
+}

@@ -1,0 +1,66 @@
+﻿@model HrPayrollSystemFinal.Models.CurrentWorkPlace
+
+@{
+    ViewData["Title"] = "İş yeri haqqında";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İşçinin vəzifəsi haqqında məlumat</h2>
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Işçinin A.S.A</th>
+                            <th>Şirkət </th>
+                            <th>Departament </th>
+                            <th>Mağaza </th>
+                            <th>Vəzifə</th>
+                            <th>Maaş </th>
+                            <th>Daxil olma tarixi</th>
+                            <th>Çıxış tarixi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                            <tr>
+                                <td>
+                                    @Model.Worker.Name
+                                    @Model.Worker.Surname
+                                    @Model.Worker.FatherName
+                                </td>
+                                <td>
+                                    @Model.Company.Name
+                                </td>
+                                <td>
+                                    @Model.Department.Name
+                                </td>
+                                <td>
+                                    @Model.Shop.Name
+                                </td>
+                                <td>
+                                    @Model.Position.Name
+                                </td>
+                                <td>
+                                    @Model.Position.Salary ₼ (AZN)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => Model.EntryDate)
+                                </td>
+                                <td>
+                                    @Model.ExitDate
+                                </td>
+                               
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

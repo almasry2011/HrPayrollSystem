@@ -1,0 +1,57 @@
+﻿@model HrPayrollSystemFinal.Models.Continuity
+@using HrPayrollSystemFinal.Models.Enums
+@{
+    ViewData["Title"] = "Davamiyyət Əlavə et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Əlavə et</h2>
+
+<h4>Davamiyyət cədvəli</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Add" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-10">
+                    <label asp-for="WorkerId" class="control-label"></label>
+                    @await Component.InvokeAsync("CurrentWorkers")
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Date" class="control-label"></label>
+                    <input asp-for="Date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Status" class="control-label"></label>
+                    <select asp-for="Status" class="form-control" asp-items="Html.GetEnumSelectList<Status>()">
+                        <option value="0">Davamiyyəti daxil edin</option>
+                    </select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="ReasonName" class="control-label"></label>
+                    <input asp-for="ReasonName" class="form-control" placeholder="Səbəbini yazın" />
+                    <span asp-validation-for="ReasonName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-5">
+                    <label asp-for="Reason" class="control-label"></label>
+                    <select asp-for="Reason" class="form-control" asp-items="Html.GetEnumSelectList<Absent>()"></select>
+                    <span asp-validation-for="Reason" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Davamiyyət cədvəlinə qayıt</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,10 @@
+﻿@model SelectListItemViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <select class="form-control" asp-items="Model.SelectListCurrentWorkers" name="WorkerId" asp-for="Worker.Id">
+            <option value="">İşçinin adını daxil edin</option>
+        </select>
+        <span asp-validation-for="Worker.Id" class="text-danger"></span>
+    </div>
+</div>

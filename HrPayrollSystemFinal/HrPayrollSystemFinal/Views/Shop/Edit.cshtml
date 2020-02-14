@@ -1,0 +1,70 @@
+﻿@model HrPayrollSystemFinal.Viewmodels.ShopViewModel
+
+@{
+    ViewData["Title"] = "Düzəliş et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Düzəliş et</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompanyId" class="control-label"></label>
+                <select asp-for="CompanyId" class="form-control" id="companies" asp-items="@(new SelectList(ViewBag.Companies,"Id","Name"))">
+                    <option value="">Şirkət adı daxil edin..</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepartmentId" class="control-label"></label>
+                <select asp-for="DepartmentId" class="form-control" asp-items="@(new SelectList(ViewBag.Departments,"Id","Name"))">
+                    <option value="">Departament adı daxil edin..</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Back to List</a>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+
+        $(document).on("change", "#companies", function () {
+            var data = $("#companies").val();
+
+            if (data) {
+                $.ajax({
+                    url: "/Ajax/LoadDepartments",
+                    data: { companyId: data },
+                    type: "POST",
+                    success: function (res) {
+                        $("#DepartmentId").html(res)
+                    }
+                })
+            }
+            else {
+                $("#DepartmentId").html("<option>Departament adı daxil edin..</option>")
+            }
+
+        });
+
+    </script>
+
+}

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<HrPayrollSystemFinal.Models.Worker>
+
+@{
+    ViewData["Title"] = "İşçilərin siyahısı";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bütün işçilər </h2>
+<h6>İşçilərin sayı @ViewBag.TotalCount</h6>
+<p>
+    <a asp-action="Create">Yeni işçi əlavə et</a>
+</p>
+<input type="hidden" id="workerCount" value="@ViewBag.TotalCount" />
+
+
+<div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered employees" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>S.A.A</th>
+                        </tr>
+                    </thead>
+                    <tbody class="main-body" id="myTable">
+                        <partial name="_WorkersPartial" model="Model" />
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <button class="btn btn-outline-primary w-50 mx-auto" id="load_more">Daha çox</button>
+</div>

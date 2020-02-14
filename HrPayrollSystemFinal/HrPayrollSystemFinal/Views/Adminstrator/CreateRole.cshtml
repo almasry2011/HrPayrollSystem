@@ -1,0 +1,29 @@
+﻿@model HrPayrollSystemFinal.Viewmodels.CreateRoleViewModel
+
+@{
+    ViewData["Title"] = "Rol Əlavə et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Əlavə et</h2>
+
+<h4>Rol</h4>
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="CreateRole" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group col-md-6">
+                    <label asp-for="RoleName" class="control-label"></label>
+                    <input asp-for="RoleName" class="form-control" placeholder="Hr,Admin..." />
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="ListRoles">Rolların siyahısı</a>
+</div>

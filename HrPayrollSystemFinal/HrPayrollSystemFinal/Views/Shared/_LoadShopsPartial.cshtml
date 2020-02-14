@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Shop>
+
+<option value="">Mağaza daxil edin..</option>
+
+@foreach (var shop in Model)
+{
+    <option value="@shop.Id">@shop.Name</option>
+}

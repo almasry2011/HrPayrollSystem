@@ -1,0 +1,56 @@
+﻿@model HrPayrollSystemFinal.Models.PreviousWorkPlace
+
+@{
+    ViewData["Title"] = "Əvvəli iş yeri əlavə et";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>İşçinin əvvəlki iş yerini</h2>
+
+<h4>Əlavə et</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddPrevious" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="WorkerId" class="control-label"></label>
+                @await Component.InvokeAsync("CurrentWorkers")
+                <span asp-validation-for="WorkerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WorkPlaceName" class="control-label"></label>
+                <input asp-for="WorkPlaceName" class="form-control"  placeholder="Məsələn İcomp..."/>
+                <span asp-validation-for="WorkPlaceName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EntryDate" class="control-label"></label>
+                <input asp-for="EntryDate" class="form-control" />
+                <span asp-validation-for="EntryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExitDate" class="control-label"></label>
+                <input asp-for="ExitDate" class="form-control" />
+                <span asp-validation-for="ExitDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReasonOfTermination" class="control-label"></label>
+                <input asp-for="ReasonOfTermination" class="form-control" placeholder="Məsələn maaş az idi.." />
+                <span asp-validation-for="ReasonOfTermination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Əlavə et" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Previous">Ümumi siyahıya qayıt</a>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

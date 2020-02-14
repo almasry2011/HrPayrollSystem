@@ -1,0 +1,93 @@
+﻿@model IEnumerable<HrPayrollSystemFinal.Models.Payroll>
+
+@{
+    ViewData["Title"] = "Ödənilmiş maaşlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form asp-controller="Payroll" asp-action="List" method="post">
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <select asp-items="Html.GetEnumSelectList<Month>()" class="form-control" name="enteredMonth">
+                <option value="" selected="selected"></option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <input type="submit" value="Axtarış et" class="btn btn-outline-primary" />
+        </div>
+    </div>
+</form>
+<h2>Maaş almış işçilər</h2>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            İşçinin A.S.A
+                        </th>
+                        <th>
+                            Vəzifə
+                        </th>
+                        <th>
+                            Gəlmədiyi günlərin sayı
+                        </th>
+                        <th>
+                            Bonus
+                        </th>
+                        <th>
+                            Mağaza Bonus
+                        </th>
+
+                        <th>
+                            Məzuniyyət bonus
+                        </th>
+
+                        <th>
+                            Ümumi maaş
+                        </th>
+                        <th>
+                            Tarix
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Worker.Name)
+                                @Html.DisplayFor(modelItem => item.Worker.Surname)
+                                @Html.DisplayFor(modelItem => item.Worker.FatherName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Position.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CountofAbsentDays) gün
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Bonus) ₼ (AZN)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ShopBonus) ₼ (AZN)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VacationBonus) ₼ (AZN)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalSalary) ₼ (AZN)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateOfPaidSalaries)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
